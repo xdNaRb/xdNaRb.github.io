@@ -81,7 +81,7 @@
     }
     #entries, #name, #number, #price {cursor: pointer;
     }
-    p {text-align: center;}
+    p {text-align: left;}
     
 </style>
 
@@ -191,10 +191,10 @@ function counter() {
         }
     }   
                     
-  bodyElement.appendChild(newElement).style.lineHeight=".5em";
+  bodyElement.appendChild(newElement).style.lineHeight="1em";
   document.querySelector("p").style.color = "blue";
-  document.querySelector("p").style.textAlign ="right";
-  document.querySelector("p").style.marginRight = "1300px"; //change to 500px to center printing
+  //document.querySelector("p").style.textAlign ="right";
+  //document.querySelector("p").style.marginRight = "1300px"; //change to 500px to center printing
   
 }
           
