@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   
+<head>
+    <meta charset="utf-8">
+    <title>
+        Generate Table With Multiple Inputs 
+    </title>
+</head>
+<style>
+    body {font-family: serif;
+                font-size: 10pt;
+            text-align: left;
+            background-color: lemonchiffon;
+    }
+  td {font-family: Arial, Helvetica, sans-serif;
+                font-size: 10pt;
+                width: 1in;
+                height: .085in;
+                text-align: right;
+                }
+    #underline {text-decoration: underline;
+                    text-align: right;
+                }
+    #line {text-decoration: overline;
+                line-height: .085in;
+                }
+    a {
+        text-decoration: none;
+        font-size: 10pt;
+        font-family: sans-serif;
+        border-radius: 10px;
+        padding: 10px;
+        width: 30px;
+        height: 10px;
+        color: lightcoral;
+        background-color: green;
+        margin-left: 110px;
+    }
+    a:hover {
+        background-color: blue;
+            cursor: pointer;
+            }
+    #demo1 {
+      margin: .5em;
+                width: 200px;
+                height: 150px;
+                border-style: ridge;
+                border-width: .5em;
+                margin-left: 105px;
+                text-align: center;
+    }
+    #demo2 {
+      margin: .5em;
+                width: 300px;
+                height: 200px;
+                border-style: ridge;
+                border-width: .5em;
+                text-align: center;
+    }
+    #head {
+      font-size: 10pt;
+      color : blue;
+      background: lightgray;
+    }
+    #head:hover {
+      background-color: aqua;
+      cursor: pointer;
+    }
+    #entries, #name, #number, #price, #head:focus {
+    color: red;
+    }
+    a:focus {
+        color: red;
+    }
+    #entries, #name, #number, #price, #head:hover {
+    color: red;
+    }
+    a:hover {
+        color: red;
+    }
+    #entries, #name, #number, #price {cursor: pointer;
+    }
+    #entries {caret-shape: block;}
+    p {text-align: left;}
+    
+</style>
+
+<body>
+
+<form>
+
+  <div id="demo1">
+      <h3>How many entries?</h3>
+        <br>
+          <label for="Entries">No. Entries</label>
+          <input id="entries" type="number">
+        <br>
+  </div>
+
+  <div id="demo2">
+   <h3>Please enter data</h3>
+   <br>
+      <label for="Name">Plant Name</label> 
+       <input id="name" type="text">
+    <br> 
+   <br>
+     <label for="Number">Number</label>
+   <input id="number" type="number">
+   <br>
+   <br>   
+    <label for="Price">Price/Plant</label>
+   <input id="price" type="number">
+   <br>
+   <br>
+   <input type="button" id="head" value="Enter" onclick="data()" onmousedown="counter()">
+   <br>
+</div>
+
+</form>
+
+<br>
+
+<a href="#"onclick="window.location.reload(true);return false";>Reload Table</a>
+
+<br>
+<br>
+
+<p></p>
+
+<table>
+  <tbody>
+  <tr>
+    <tr id="underline">
+      <td>Plant</td>
+      <td>Number</td>
+      <td>Price/plant</td>
+      <td>Total</td>
+</tr>
+</tbody>
+</table>
+
+<script type="text/javascript">
+
+var arrNames= new Array();
+var arrNumbers= new Array();
+var arrPrices= new Array();
+
+var count = 1;
+
+function counter() {
+    
+  let newElement = document.createElement ("p");
+  let bodyElement = document.querySelector ("p");
+  if (count == 1) {
+  newElement.textContent = (count++ + "st Entry Entered");
+  } else {
+    if (count == 2) {
+        newElement.textContent = (count++ + "nd Entry Entered");
+    } else {
+        if (count == 3) {
+            newElement.textContent = (count++ + "rd Entry Entered");
+            } else {
+              if (count == 11) {
+                newElement.textContent = (count++ + "th Entry Entered");
+              } else {
+                if (count == 12) {
+                    newElement.textContent = (count++ + "th Entry Entered");
+                } else {
+                    if (count == 13) {
+                        newElement.textContent = (count++ + "th Entry Entered");
+                    } else {
+                          var digits = count.toString().split("");
+                            if ((digits[(digits.length-1)] == 1)) {
+                            newElement.textContent = (count++ + "st Entry Entered");
+                            } else {
+                                if ((digits[(digits.length-1)] == 2)) {
+                                newElement.textContent = (count++ + "nd Entry Entered");
+                                } else {
+                                    if ((digits[(digits.length-1)] == 3)) {
+                                    newElement.textContent = (count++ + "rd Entry Entered");
+                                    } else {
+                                        newElement.textContent = (count++ + "th Entry Entered");
+                                    }
+                      
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }   
+                    
+  bodyElement.appendChild(newElement).style.lineHeight=".5em";
+  document.querySelector("p").style.color = "blue";
+  document.querySelector("p").style.textAlign ="right";
+  document.querySelector("p").style.marginRight = "1300px"; //change to 500px to center printing
+  
+}
+          
+function data() {
+  
+    var entries = document.getElementById("entries").value;
+    var name = document.getElementById("name").value;
+    var number = document.getElementById("number").value;
+    var price = document.getElementById("price").value;
+    arrNames[arrNames.length]=name;    
+    arrNumbers[arrNumbers.length]=number;
+    arrPrices[arrPrices.length]=price;
+    (arrPrices[entries-1][entries-2]);
+
+    for (i = 0; i < entries; i++) {
+            if (arrNames[i] == undefined){
+                    arrNames[i].style.display = "none";
+            } else {
+
+                    const tbl = document.createElement("table");
+                    const tblBody = document.createElement("tbody");
+                        const row = document.createElement("tr");
+
+                        const cell1 = document.createElement("td");
+                        const cell1Text = document.createTextNode(arrNames[i]);
+                        cell1.appendChild(cell1Text);
+                        row.appendChild(cell1);
+                        
+
+                        const cell2 = document.createElement("td");
+                        const cell2Text = document.createTextNode(arrNumbers[i]);
+                        cell2.appendChild(cell2Text);
+                        row.appendChild(cell2);
+                        
+
+                        const cell3 = document.createElement("td");
+                        const cell3Text = document.createTextNode((arrPrices[i]*1).toLocaleString("en-US", {style:"currency", currency:"USD"}));
+                        cell3.appendChild(cell3Text);
+                        row.appendChild(cell3);
+                        
+
+                        const cell4 = document.createElement("td");
+                        const cell4Text = document.createTextNode((arrNumbers[i] * arrPrices[i]).toLocaleString("en-US", {style:"currency", currency:"USD"}));
+                        cell4.appendChild(cell4Text);
+                        row.appendChild(cell4);
+                        
+
+                tblBody.appendChild(row); 
+                tbl.appendChild(tblBody);
+                document.body.appendChild(tbl);
+
+  }
+}
+
+  let sum = 0;
+  for (i = 0; i < entries; i++) {
+    sum = sum + (arrNumbers[i] * arrPrices[i]);
+  }
+
+    const tbl = document.createElement("table");
+                    const tblBody = document.createElement("tbody");
+                        const row = document.createElement("tr");
+
+                        const cell1 = document.createElement("td");
+                        const cell1Text = document.createTextNode("");
+                        cell1.appendChild(cell1Text);
+                        row.appendChild(cell1);
+                        
+
+                        const cell2 = document.createElement("td");
+                        const cell2Text = document.createTextNode("");
+                        cell2.appendChild(cell2Text);
+                        row.appendChild(cell2);
+                        
+
+                        const cell3 = document.createElement("td");
+                        const cell3Text = document.createTextNode(("").toLocaleString("en-US", {style:"currency", currency:"USD"}));
+                        cell3.appendChild(cell3Text);
+                        row.appendChild(cell3);
+                        
+
+                        const cell4 = document.createElement("td");
+                        const cell4Text = document.createTextNode((sum).toLocaleString("en-US", {style:"currency", currency:"USD"}));
+                        cell4.appendChild(cell4Text);
+                        row.appendChild(cell4);
+                        cell4.setAttribute("id", "line");
+                        
+
+                tblBody.appendChild(row); 
+                tbl.appendChild(tblBody);
+                document.body.appendChild(tbl);
+    }
+
+</script>
+ 
+</body>
+</html>
