@@ -60,11 +60,11 @@
     }
     #head {
       font-size: 10pt;
-      color : blue;
-      background: lightgray;
+      color : lightcoral;
+      background: green;
     }
     #head:hover {
-      background-color: aqua;
+      background-color: blue;
       cursor: pointer;
     }
     #entries, #name, #number, #price, #head:focus {
@@ -82,8 +82,13 @@
     #entries, #name, #number, #price {cursor: pointer;
     }
     p {text-align: left;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10pt;}
+      font-family: Arial, Helvetica, sans-serif;}
+    #head:active {
+      color: seashell;
+    }
+    a:active {
+      color: seashell;
+    }
     
 </style>
 
@@ -195,9 +200,6 @@ function counter() {
                     
   bodyElement.appendChild(newElement).style.lineHeight="1em";
   document.querySelector("p").style.color = "blue";
-  //document.querySelector("p").style.textAlign ="right";
-  //document.querySelector("p").style.marginRight = "1300px"; //change to 500px to center printing
-  
 }
           
 function data() {
